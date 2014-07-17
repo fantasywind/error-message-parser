@@ -44,6 +44,24 @@
       })(this);
     };
 
+    ErrorMessageParser.prototype.generateError = function(code, additionalMessage) {
+      if (this.messages[code]) {
+        return {
+          status: false,
+          code: code,
+          level: this.messages[code].level || 1,
+          message: additionalMessage ? "" + this.messages[code] + " (" + additionalMessage + ")" : this.messages[code].msg
+        };
+      } else {
+        return {
+          status: false,
+          code: -1,
+          level: 3,
+          message: "Server Error!"
+        };
+      }
+    };
+
     ErrorMessageParser.prototype.setLang = function(lang) {
       this.lang = lang;
     };
