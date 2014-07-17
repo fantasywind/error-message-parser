@@ -34,6 +34,22 @@ class ErrorMessageParser
 
       next()
 
+  generateError: (code, additionalMessage)->
+    if @messages[code]
+      return {
+        status: false
+        code: code
+        level: @messages[code].level or 1
+        message: if additionalMessage then "#{@messages[code]} (#{additionalMessage})" else @messages[code].msg
+      }
+    else
+      return {
+        status: false
+        code: -1
+        level: 3
+        message: "Server Error!"
+      }
+
   setLang: (@lang)->
   setCwd: (@cwd)->
 
