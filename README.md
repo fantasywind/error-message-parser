@@ -1,3 +1,3 @@
-# error-message-parser [![NPM version](https://badge.fury.io/js/error-message-parser.svg)](http://badge.fury.io/js/error-message-parser) ![Travis-CI Status](https://travis-ci.org/fantasywind/error-message-parser.svg?branch=master) [![Coverage Status](https://coveralls.io/repos/fantasywind/error-message-parser/badge.png)](https://coveralls.io/r/fantasywind/error-message-parser)
+# error-message-parser [![NPM version](https://badge.fury.io/js/error-message-parser.svg)](http://badge.fury.io/js/error-message-parser) ![Travis-CI Status](https://travis-ci.org/fantasywind/error-message-parser.svg?branch=master) [![Coverage Status](https://coveralls.io/repos/fantasywind/error-message-parser/badge.png?branch=master)](https://coveralls.io/r/fantasywind/error-message-parser?branch=master)
 
 i18n error message express middleware
