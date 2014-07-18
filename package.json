@@ -4,7 +4,12 @@
   "description": "i18n error message express middleware",
   "main": "index.js",
   "scripts": {
-    "test": "mocha test/test.js"
+    "test": "mocha --check-leaks --reporter spec --bail test/",
+    "test-cov": "istanbul cover node_modules/mocha/bin/_mocha -- --check-leaks --reporter dot test/",
+    "test-travis": "istanbul cover node_modules/mocha/bin/_mocha --report lcovonly -- --check-leaks --reporter spec test/"
+  },
+  "engines": {
+    "node": ">= 0.10.0"
   },
   "repository": {
     "type": "git",
@@ -23,6 +28,7 @@
   "homepage": "https://github.com/fantasywind/error-message-parser",
   "devDependencies": {
     "mocha": "^1.20.1",
-    "should": "^4.0.4"
+    "should": "^4.0.4",
+    "istanbul": "^0.3.0"
   }
 }
