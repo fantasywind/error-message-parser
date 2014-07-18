@@ -8,6 +8,7 @@
     function ErrorMessageParser() {}
 
     ErrorMessageParser.prototype.Parser = function(options) {
+      options = options || {};
       this.cwd = options.cwd, this.lang = options.lang;
       if (this.cwd && this.lang) {
         this.loadMessages();
@@ -28,7 +29,7 @@
                 status: false,
                 code: code,
                 level: _this.messages[code].level || 1,
-                message: additionalMessage ? "" + _this.messages[code] + " (" + additionalMessage + ")" : _this.messages[code].msg
+                message: additionalMessage ? "" + _this.messages[code].msg + " (" + additionalMessage + ")" : _this.messages[code].msg
               });
             } else {
               return res.json({
@@ -50,7 +51,7 @@
           status: false,
           code: code,
           level: this.messages[code].level || 1,
-          message: additionalMessage ? "" + this.messages[code] + " (" + additionalMessage + ")" : this.messages[code].msg
+          message: additionalMessage ? "" + this.messages[code].msg + " (" + additionalMessage + ")" : this.messages[code].msg
         };
       } else {
         return {
@@ -70,6 +71,10 @@
       this.cwd = cwd;
     };
 
+    ErrorMessageParser.prototype.setMessages = function(messages) {
+      this.messages = messages;
+    };
+
     ErrorMessageParser.prototype.loadMessages = function() {
       var e;
       if (this.lang && this.cwd) {
@@ -83,6 +88,8 @@
         throw new Error("You have to set language file path. Use setCwd function.");
       } else if (this.cwd) {
         throw new Error("You have to set language. Use setLang function.");
+      } else {
+        throw new Error("You have to initial language files.");
       }
     };
 

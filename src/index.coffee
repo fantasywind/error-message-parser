@@ -4,6 +4,7 @@ class ErrorMessageParser
   constructor: ->
 
   Parser: (options)->
+    options = options or {}
     {@cwd, @lang} = options
 
     @loadMessages() if @cwd and @lang
@@ -24,7 +25,7 @@ class ErrorMessageParser
             status: false
             code: code
             level: @messages[code].level or 1
-            message: if additionalMessage then "#{@messages[code]} (#{additionalMessage})" else @messages[code].msg
+            message: if additionalMessage then "#{@messages[code].msg} (#{additionalMessage})" else @messages[code].msg
         else
           res.json
             status: false
@@ -40,7 +41,7 @@ class ErrorMessageParser
         status: false
         code: code
         level: @messages[code].level or 1
-        message: if additionalMessage then "#{@messages[code]} (#{additionalMessage})" else @messages[code].msg
+        message: if additionalMessage then "#{@messages[code].msg} (#{additionalMessage})" else @messages[code].msg
       }
     else
       return {
@@ -52,6 +53,7 @@ class ErrorMessageParser
 
   setLang: (@lang)->
   setCwd: (@cwd)->
+  setMessages: (@messages)->
 
   loadMessages: ->
     if @lang and @cwd
@@ -63,5 +65,7 @@ class ErrorMessageParser
       throw new Error "You have to set language file path. Use setCwd function."
     else if @cwd
       throw new Error "You have to set language. Use setLang function."
+    else
+      throw new Error "You have to initial language files."
 
 module.exports = new ErrorMessageParser
