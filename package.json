@@ -4,7 +4,7 @@
   "description": "i18n error message express middleware",
   "main": "index.js",
   "scripts": {
-    "test": "mocha --compilers coffee:coffee-script/register test/test.coffee"
+    "test": "mocha test/test.js"
   },
   "repository": {
     "type": "git",
